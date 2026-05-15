@@ -1,0 +1,12 @@
+
+
+
+
+docker compose down -v
+docker volume prune -f
+
+
+docker exec -it sysrifas-db psql -h localhost -U postgres -d sysrifas
+\dt
+
+http://localhost:8000/docs
