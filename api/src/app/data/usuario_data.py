@@ -106,3 +106,16 @@ class UsuarioData(BaseData):
         db.refresh(usuario)
 
         return usuario
+    
+    @staticmethod
+    def login(db, email: str, senha: str):
+
+        return (
+            db.query(UsuarioModel)
+            .filter(
+                UsuarioModel.email == email,
+                UsuarioModel.senha == senha,
+                UsuarioModel.fl_delete == "F"
+            )
+            .first()
+        )
