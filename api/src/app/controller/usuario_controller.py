@@ -7,6 +7,7 @@ from app.schema.usuario_schema import UsuarioUpdateSchema
 from app.service.usuario_service import UsuarioService
 from typing import List
 from app.schema.usuario_schema import UsuarioResponse
+from app.schema.auth_schema import LoginSchema
 
 router = APIRouter(
     prefix="/usuario",
@@ -69,4 +70,15 @@ def update_usuario(
         id,
         usuario_data,
         email
+    )
+
+@router.post("/login")
+def login(
+    login_data: LoginSchema,
+    db: Session = Depends(get_db)
+):
+
+    return UsuarioService.login(
+        db,
+        login_data
     )

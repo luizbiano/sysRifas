@@ -129,3 +129,14 @@ class UsuarioService:
             )
 
         return usuario
+    
+    @staticmethod
+    def login(db, login_data):
+
+        usuario = UsuarioData.login(
+            db,
+            login_data.email,
+            login_data.senha
+        )
+
+        return usuario is not None
